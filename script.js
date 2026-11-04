@@ -29,7 +29,22 @@
   });
 
   cw2.addEventListener("click", function () {
-    //TODO
+    fetch("db.json")
+      .then((response) => response.json())
+      .then((array) => {
+        let html = "<ul>";
+
+        array.posts.forEach((a) => {
+          html += `<li>${a.id}<br>${a.title}</li>`;
+        });
+
+        array.comments.forEach((b) => {
+          html += `<li>${b.id}<br>${b.body}<br>${b.postId}</li>`;
+        });
+
+        html += "</ul>";
+        answer.innerHTML = html;
+      });
   });
 
   cw3.addEventListener("click", function () {
